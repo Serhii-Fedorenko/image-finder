@@ -1,1 +1,67 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+
+body {
+    background-color: #000000;
+}
+
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(calc(100% / 3 - 20px), 1fr));
+  gap: 10px;
+  margin-top: 80px;
+}
+
+.gallery_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+
+  & img {
+    max-width: 100%;
+    max-height: auto;
+    object-fit: cover;
+  }
+}
+
+.header {
+  position: fixed; /* Фіксована позиція */
+  top: 0; /* Зверху сторінки */
+  left: 0;
+  width: 100%;
+  background-color: #ffffff; /* Колір фону */
+  padding: 10px 20px; /* Відступи від країв */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Тінь */
+  z-index: 999; /* Завжди вище інших елементів */
+}
+
+.search-form {
+  display: flex;
+  justify-content: center; /* Вирівнюємо форму по центру */
+  align-items: center;
+}
+
+.search-input {
+  width: 300px; /* Ширина поля вводу */
+  padding: 8px; /* Відступи всередині поля */
+  font-size: 16px; /* Розмір шрифту */
+  border: 1px solid #ccc; /* Обрамлення поля вводу */
+  border-radius: 5px; /* Радіус кутиків */
+}
+
+.search-button {
+  padding: 8px 20px; /* Розміри кнопки */
+  margin-left: 10px; /* Відступ від поля вводу */
+  background-color: #007bff; /* Колір фону кнопки */
+  color: #ffffff; /* Колір тексту */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Стилі для форми під час фокусу */
+.search-input:focus {
+  outline: none;
+  border-color: #007bff; /* Змінюємо колір обрамлення під час фокусу */
+}

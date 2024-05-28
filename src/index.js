@@ -5,8 +5,6 @@ const form = document.querySelector('.search-form');
 
 form.addEventListener('submit', handleInputChange);
 
-// getImages('sea', 1).then(({ hits }) => renderImages(hits));
-
 function renderImages(arr) {
   const murkup = arr
     .map(
