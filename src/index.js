@@ -18,7 +18,7 @@ const options = {
 };
 
 let observer = new IntersectionObserver(handleLoadMore, options);
-observer.observe(target)
+observer.observe(target);
 
 const lightbox = new SimpleLightbox('.gallery_item', {
   sourceAttr: 'data-source',
@@ -43,6 +43,7 @@ function handleInputChange(e) {
   gallery.innerHTML = '';
   const form = e.target;
   queryValue = form.elements.query.value;
+  currentPage = 1;
   getImages(queryValue, currentPage).then(({ hits }) => renderImages(hits));
   form.reset();
 }
