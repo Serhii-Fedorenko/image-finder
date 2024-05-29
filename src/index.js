@@ -4,8 +4,21 @@ import getImages from './js/getImages';
 
 const gallery = document.getElementById('gallery');
 const form = document.querySelector('.search-form');
+const target = document.getElementById('guard');
 
 form.addEventListener('submit', handleInputChange);
+
+let currentPage = 1;
+let queryValue = '';
+
+const options = {
+  root: null,
+  rootMargin: '500px',
+  threshold: 1.0,
+};
+
+let observer = new IntersectionObserver(handleLoadMore, options);
+observer.observe(target)
 
 const lightbox = new SimpleLightbox('.gallery_item', {
   sourceAttr: 'data-source',
@@ -22,16 +35,19 @@ function renderImages(arr) {
     )
     .join('');
   gallery.insertAdjacentHTML('beforeend', murkup);
-  lightbox.refresh()
+  lightbox.refresh();
 }
 
 function handleInputChange(e) {
   e.preventDefault();
   gallery.innerHTML = '';
   const form = e.target;
-  const currentPage = 1;
-  getImages(form.elements.query.value, 1).then(({ hits }) =>
-    renderImages(hits)
-  );
+  queryValue = form.elements.query.value;
+  getImages(queryValue, currentPage).then(({ hits }) => renderImages(hits));
   form.reset();
+}
+
+function handleLoadMore() {
+  currentPage += 1;
+  getImages(queryValue, currentPage).then(({ hits }) => renderImages(hits));
 }
