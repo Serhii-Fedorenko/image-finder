@@ -6,7 +6,13 @@ const gallery = document.getElementById('gallery');
 const form = document.querySelector('.search-form');
 
 form.addEventListener('submit', handleInputChange);
-gallery.addEventListener('click', handleGalleryItemClick);
+
+const lightbox = new SimpleLightbox('.gallery_item', {
+  sourceAttr: 'data-source',
+  captionsData: 'alt',
+  captionDelay: 250,
+  overlayOpacity: 0.5,
+});
 
 function renderImages(arr) {
   const murkup = arr
@@ -15,7 +21,8 @@ function renderImages(arr) {
         `<a class='gallery_item' href='${item.largeImageURL}' data-source='${item.largeImageURL}'><img src='${item.webformatURL}' alt='${item.tags}' loading="lazy"/></a>`
     )
     .join('');
-  return gallery.insertAdjacentHTML('beforeend', murkup);
+  gallery.insertAdjacentHTML('beforeend', murkup);
+  lightbox.refresh()
 }
 
 function handleInputChange(e) {
@@ -27,21 +34,4 @@ function handleInputChange(e) {
     renderImages(hits)
   );
   form.reset();
-}
-
-function handleGalleryItemClick(e) {
-  e.preventDefault();
-  if (e.target.nodeName !== 'IMG') return;
-  const currentImgOriginal = e.target.src;
-  handleShowImage(currentImgOriginal)
-}
-
-function handleShowImage(src) {
-  const lightbox = new SimpleLightbox('.gallery_item', {
-    sourceAttr: 'data-source',
-    captionsData: 'alt',
-    captionDelay: 250,
-    overlayOpacity: 0.5
-  });
-  lightbox.open([src]);
 }
