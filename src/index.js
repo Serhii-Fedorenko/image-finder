@@ -28,13 +28,29 @@ const lightbox = new SimpleLightbox('.gallery_item', {
 });
 
 function renderImages(arr) {
-  const murkup = arr
-    .map(
-      item =>
-        `<a class='gallery_item' href='${item.largeImageURL}' data-source='${item.largeImageURL}'><img src='${item.webformatURL}' alt='${item.tags}' loading="lazy"/></a>`
-    )
-    .join('');
-  gallery.insertAdjacentHTML('beforeend', murkup);
+  const markup = arr.map(item => {
+    const thumb = document.createElement('a');
+    thumb.classList.add('gallery_item');
+    thumb.href = item.largeImageURL;
+    thumb.setAttribute('data-source', item.largeImageURL);
+
+    const image = document.createElement('img');
+    image.src = item.webformatURL;
+    image.alt = item.tags;
+    image.loading = 'lazy';
+
+    // const comments = document.createElement('span')
+    // comments.textContent = item.comments
+
+    // const likes = document.createElement('span');
+    // likes.textContent = item.likes
+
+    thumb.appendChild(image);
+    // thumb.appendChild(comments)
+    // thumb.appendChild(likes)
+    return thumb;
+  });
+  markup.forEach(item => gallery.appendChild(item));
   lightbox.refresh();
 }
 
