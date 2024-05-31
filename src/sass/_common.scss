@@ -33,10 +33,14 @@ body {
     object-fit: cover;
   }
 
-  & span {
+  &--stats_list {
     position: absolute;
     bottom: 0;
-    left: 50%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
     color: white;
   }
 
