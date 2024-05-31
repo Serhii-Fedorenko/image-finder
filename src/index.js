@@ -40,26 +40,26 @@ function renderImages(arr) {
     image.loading = 'lazy';
 
     const statsList = document.createElement('ul');
-    statsList.classList.add('gallery_item--stats_list')
+    statsList.classList.add('gallery_item--stats_list');
 
-    const comments = document.createElement('li')
-    comments.textContent = item.comments
+    const comments = document.createElement('li');
+    comments.textContent = item.comments;
 
     const likes = document.createElement('li');
-    likes.textContent = item.likes
+    likes.textContent = item.likes;
 
     const views = document.createElement('li');
-    views.textContent = item.views
+    views.textContent = item.views;
 
     const downloads = document.createElement('li');
-    downloads.textContent = item.downloads
+    downloads.textContent = item.downloads;
 
     thumb.appendChild(image);
-    statsList.appendChild(likes)
-    statsList.appendChild(views)
-    statsList.appendChild(downloads)
-    statsList.appendChild(comments)
-    thumb.appendChild(statsList)
+    statsList.appendChild(likes);
+    statsList.appendChild(views);
+    statsList.appendChild(downloads);
+    statsList.appendChild(comments);
+    thumb.appendChild(statsList);
     return thumb;
   });
   markup.forEach(item => gallery.appendChild(item));

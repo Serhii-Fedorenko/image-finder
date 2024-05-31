@@ -2,7 +2,7 @@
 @import '~node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 
 body {
-  background-color: #000000;
+  background-color: #494D5F;
 }
 
 .layout {
@@ -101,9 +101,8 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #ffffff;
+  background-color: #e5eaf5;
   padding: 10px 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 999;
 }
 
@@ -111,10 +110,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+
+  @media (min-width: 320px) and (max-width: 600px) {
+    width: 100%;
+  }
 }
 
 .search-input {
-  width: 300px;
+  width: 80%;
   padding: 8px;
   font-size: 16px;
   border: 1px solid #ccc;
