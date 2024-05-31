@@ -1,4 +1,5 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
+@import '~node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 
 body {
   background-color: #000000;
@@ -23,14 +24,15 @@ body {
   text-align: center;
   width: 100%;
   height: 300px;
-  border: white 1px solid;
-  padding-bottom: 30px;
+  //   border: #ccc 1px solid;
+  padding-bottom: 20px;
 
   & img {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 1%;
   }
 
   &--stats_list {
@@ -39,9 +41,46 @@ body {
     left: 0;
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    padding: 0;
+    margin: 0;
     list-style: none;
     color: white;
+
+    & li {
+      position: relative;
+      padding-left: 1.5em;
+      font-size: 1rem;
+
+      @media (max-width: 600px) {
+        font-size: 0.6rem;
+      }
+    }
+
+    & li::before {
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 500;
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: #fff;
+    }
+
+    & li:nth-child(1)::before {
+      content: '\f004';
+    }
+
+    & li:nth-child(2)::before {
+      content: '\f06e';
+    }
+
+    & li:nth-child(3)::before {
+      content: '\f358';
+    }
+
+    & li:nth-child(4)::before {
+      content: '\f075';
+    }
   }
 
   @media (max-width: 600px) {
